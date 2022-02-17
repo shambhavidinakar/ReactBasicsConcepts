@@ -6,17 +6,17 @@ const App = () => {
   const [addedUsers, setAddedUsers] = useState([]);
 
 
-  const addUserHandler = (Uname,Uage) => {
+  const addUserHandler = (Uname,Uage,id) => {
     setAddedUsers( (prevUsers) => {
-      return [...prevUsers,{name:Uname,age:Uage}]
+      return [...prevUsers,{name:Uname,age:Uage,id:id}]
     });
   }
 
   return (
-    <div>
+   <>
       <AddUser onAddUser={addUserHandler}/>
       <UserList users={addedUsers}/>
-    </div>
+    </>
   );
 }
 

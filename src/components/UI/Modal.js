@@ -5,7 +5,7 @@ import Button from "./Button";
 
 const Modal = (props) => {
   return (
-    <div>
+    <>
       <div className={styles.backdrop} onClick={props.onCancel} />
       <Card className={styles.modal}>
         <header className={styles.header}>
@@ -18,7 +18,7 @@ const Modal = (props) => {
           <Button onClick={props.onCancel}>Okay!</Button>
         </footer>
       </Card>
-    </div>
+    </>
   );
 };
 

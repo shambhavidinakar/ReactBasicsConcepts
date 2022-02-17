@@ -21,14 +21,15 @@ const AddUser = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     if (name.trim().length === 0 || age.trim().length === 0) {
-      setErrorContent("No Name or Age entered");
+      setErrorContent("Please provide an answer for each field");
       return;
     }
-    if (+age < 0) {
+    if (+age < 0 || +age > 120) {
       setErrorContent("Invalid age entered");
       return;
     }
-    props.onAddUser(name, age);
+    const id = Math.random().toString()
+    props.onAddUser(name, age, id);
     setAge("");
     setName("");
   };
@@ -36,9 +37,9 @@ const AddUser = (props) => {
   const resetErrorHandler = () =>{
       setErrorContent('')
   }
-  
+
   return (
-    <div>
+    <>
       {errorContent && <Modal message={errorContent} onCancel={resetErrorHandler}/>}
       <Card className={styles.input}>
         <form onSubmit={submitHandler}>
@@ -49,7 +50,7 @@ const AddUser = (props) => {
           <Button type="submit">Add New User</Button>
         </form>
       </Card>
-    </div>
+    </>
   );
 };
 
