@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from 'react-dom';
+import ReactDOM from "react-dom";
 import styles from "./Modal.module.css";
 import Card from "./Card";
 import Button from "./Button";
@@ -25,10 +25,18 @@ const ModalOverlay = (props) => {
 };
 
 const Modal = (props) => {
-  return <>
-  {ReactDOM.createPortal(<Backdrop onCancel={props.onCancel}/>, document.getElementById('backdrop-root'))}
-  {ReactDOM.createPortal(<ModalOverlay onCancel={props.onCancel} message={props.message}/>, document.getElementById('overlay-root'))}
-  </>;
+  return (
+    <>
+      {ReactDOM.createPortal(
+        <Backdrop onCancel={props.onCancel} />,
+        document.getElementById("backdrop-root")
+      )}
+      {ReactDOM.createPortal(
+        <ModalOverlay onCancel={props.onCancel} message={props.message} />,
+        document.getElementById("overlay-root")
+      )}
+    </>
+  );
 };
 
 export default Modal;
